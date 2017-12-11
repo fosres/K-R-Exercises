@@ -19,7 +19,7 @@ printf("New C Code:\n");
         continue;
       }
       else if ( input[i] == '/' && input[i+1] == '*') {
-        for ( ; input[i] != '*' && input[i+1] != '/'; )
+        for ( ; !(input[i] == '*' && input[i+1] == '/'); ) // !input[i] != '*' || !input[i] != '/'
           i++;
 
         i += 2;
