@@ -1,5 +1,5 @@
 
-
+// To end use of program, press Enter to enter a brand new empty line and press Ctrl+D (EOF)
 #include <stdio.h>
 
 int main()
