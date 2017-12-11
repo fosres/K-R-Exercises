@@ -1,4 +1,3 @@
-// Only works for deleting comments starting with "//"
 #include <stdio.h>
 
 char input[1000000];
@@ -30,14 +29,13 @@ printf("New C Code:\n");
     }
 
 
- printf("\n");
- return 0;
+
   }
   else {
     for ( int i = 0; i < c; i++)
       putchar(input[i]);
   }
 
-
-
+printf("\n");
+return 0;
 }
