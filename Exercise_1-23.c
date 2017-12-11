@@ -1,3 +1,4 @@
+// Only works for deleting comments starting with "//"
 #include <stdio.h>
 
 char input[1000000];
