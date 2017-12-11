@@ -10,7 +10,7 @@ int main(void) {
     c++;
     }
   input[c] = ch;
-printf("New C Code:\n");
+printf("\nNew C Code:\n");
   if ( c > 2) {
     for ( int i = 0; i < c; ) {
       if ( input[i] == '/' && input[i+1] == '/') {
