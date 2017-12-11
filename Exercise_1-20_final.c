@@ -2,7 +2,7 @@
 // To end use of program, press Enter to enter a new line and press Ctrl+D
 #include <stdio.h>
 
-#define n 8
+#define n 8 //set n to whatever column number preferred
 int main()
 {
   int c = 0;
