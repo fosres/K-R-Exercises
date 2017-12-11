@@ -12,15 +12,17 @@ int main(void) {
   input[c] = ch;
 printf("New C Code:\n");
   if ( c > 2) {
-    for ( int i = 0; i != c - 1; ) {
+    for ( int i = 0; i < c; ) {
       if ( input[i] == '/' && input[i+1] == '/') {
         for ( ; input[i] != '\n'; i++);
 
         continue;
       }
       else if ( input[i] == '/' && input[i+1] == '*') {
-        for ( ; input[i] != '*' && input[i+1] != '/'; i++);
+        for ( ; input[i] != '*' && input[i+1] != '/'; )
+          i++;
 
+        i += 2;
         continue;
       }
 
