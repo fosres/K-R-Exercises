@@ -30,7 +30,8 @@ printf("New C Code:\n");
     }
 
 
-
+ printf("\n");
+ return 0;
   }
   else {
     for ( int i = 0; i < c; i++)
