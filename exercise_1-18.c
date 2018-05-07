@@ -19,26 +19,41 @@ int main() {
 
 		len++;
 
-		if ( IN_SPACES && c != ' ' && c != '\t' ) {
+		if ( !IN_SPACES && c != ' ' && c != '\t' ) {
 
 			putchar(c);
+		}
+		
+		else if ( IN_SPACES && c != ' ' && c != '\t' ) {
+
+			putchar(c);
+			
 			IN_SPACES = 0;
 		}
 		
-		else if ( IN_SPACES ) {
-
-			continue;
-		}
-
-		else if ( c == '\n' && len == 0 ) {
-			
-			continue;
-
-		}
-
-		else {
+		else if ( !IN_SPACES && (c == ' ' || c == '\t') ) {
 			
 			putchar(c);
+			IN_SPACES = 1;
+
+		}
+
+		else if ( IN_SPACES && (c == ' ' || c == '\t') ) {
+			
+			continue;
+
+		}
+		/*
+		else if ( c == '\n' && len == 1 ) {
+			
+			continue;
+
+		}
+*/
+		else { // in a word
+			
+			putchar(c);
+			IN_SPACES = 0;
 
 		}
 }
