@@ -17,7 +17,7 @@ int main() {
 
 		if ( ( c == ' ' || c == '\t' ) && !OUT_A_WORD ) {
 			
-			continue;
+			putchar('\n');
 
 			OUT_A_WORD = 1;
 		}
@@ -25,8 +25,6 @@ int main() {
 		else if ( ( c == ' ' || c == '\t' ) && OUT_A_WORD ) {
 			
 			continue;
-
-			OUT_A_WORD = 0;
 
 		}
 
@@ -39,6 +37,8 @@ int main() {
 		else { // so its a letter or number char
 
 			putchar(c);
+
+			OUT_A_WORD = 0;
 	}
 
 }
