@@ -38,10 +38,28 @@ int main(void) {
   
   int c = 0;
   
-  while ( (s[c++] = getchar()) != EOF);
+   while ( (s[c] = getchar()) != EOF) {
+    
+    if ( s[c] == '\n') {
+        
+        reverse(s);
 
-  reverse(s);
-
-  printf("%s\n",s);
+        printf("%s\n",s);
+        
+        
+        int i = 0;
+        
+        while (i < 1000) {
+            s[i++] = NULL;
+        }
+        
+        
+        c = 0;
+        continue;
+    }
+  
+  c++;
+  } 
+  
   return 0;
 }
