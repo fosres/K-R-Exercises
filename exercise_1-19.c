@@ -1,11 +1,15 @@
 //exercise_1-19.c
-/* Write a program to remove
+/* Write a function to
 
-trailing blanks and tabs from
+reverse(s) that reverses
 
-each line of input, and to
+the character string s.
 
-delete entirely blank lines.
+Use it to write a program
+
+that reverses its input a
+
+line at a time.
 
 */
 #include <stdio.h>
