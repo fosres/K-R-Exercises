@@ -28,15 +28,19 @@ void reverse(char s[]) {
   
   while ( i < length ) {
 
-	reverse[i++] = s[r--];
-
+	reverse[i] = s[r];
+	
+	i++;
+	r--;
   }
 
   i = 0;
   
   while ( i < length ) {
 
-	s[i++] =  reverse[i];
+	s[i] =  reverse[i];
+
+	i++;
 
   }
   
