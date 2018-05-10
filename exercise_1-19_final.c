@@ -26,9 +26,17 @@ void reverse(char *s)           {
    do                       { 
        
        *reverse_s++ = *reverse_p--;
-}  while((*zero_p++ = *reverse_s++) != '\0');
-
+   
+       
+   } while ( reverse_p >= zero_p );
+   
+   reverse_s = reverse[0];
+   
+  while((*zero_p++ = *reverse_s++) != '\0');
+  
 }
+
+
 
 int main()
 {
