@@ -21,7 +21,7 @@ void reverse(char *s)           {
    
    char *reverse_s = reverse;
    
-   char *reverse_p = s[strlen(s)-1];
+   char *reverse_p = (s + strlen(s)-1);
    
    do                       { 
        
@@ -30,7 +30,7 @@ void reverse(char *s)           {
        
    } while ( reverse_p >= zero_p );
    
-   reverse_s = reverse[0];
+   reverse_s = (reverse + 0);
    
   while((*zero_p++ = *reverse_s++) != '\0');
   
@@ -42,7 +42,7 @@ int main()
 {
     char s[10000];
     
-    char *s_p = s, c;
+    char *s_p = s;
     
     while ((*s_p = getchar()) != '\n') {
         
