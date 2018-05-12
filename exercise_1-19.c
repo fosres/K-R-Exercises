@@ -26,7 +26,7 @@ void reverse(char s[]) {
   
   char reverse[length];
   
-  while ( i < length ) {
+  while ( i < length && r >= 0 ) {
 
 	reverse[i] = s[r];
 	
@@ -60,7 +60,7 @@ int main(void) {
         c++;
         
         }
-        
+	
         reverse(s);
 
         printf("%s\n",s);
