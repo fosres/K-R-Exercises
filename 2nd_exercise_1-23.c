@@ -69,7 +69,7 @@ main ()
      
     }
 
-  
+  printf("New code:\n");
   printf("%s",removed_comments);
   return 0;
 }
