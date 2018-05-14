@@ -63,7 +63,7 @@ int main(void) {
 	
         reverse(s);
 
-        printf("%s\n",s);
+        printf("%s\n\n",s);
         
         main();
 }
