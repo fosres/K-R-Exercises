@@ -60,5 +60,5 @@ int main() {
   
   int ans = htoi(hex);
   
-  printf("%d\n", hex);  
+  printf("%d\n", ans);  
 }
