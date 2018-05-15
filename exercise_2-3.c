@@ -21,7 +21,7 @@ int htoi(char *s)                                           {
       break;
     }
     
-    else if (*right>= 'A' && *right <= 'F')            {  
+    else if (*right>= 'A' && *right <= 'F')             {  
       
       base = ((*right -'A')+10);
       
@@ -29,7 +29,7 @@ int htoi(char *s)                                           {
       
     }
     
-    else if (*right>= 'a' && *right <= 'f')            {  
+    else if (*right>= 'a' && *right <= 'f')             {  
       
       base = ((*right -'a')+10);
       
@@ -37,7 +37,7 @@ int htoi(char *s)                                           {
       
     }
     
-    else                                              {
+    else                                                {
       // regular digit from '0' to '9'
       base = ((*right - '0'));
       
