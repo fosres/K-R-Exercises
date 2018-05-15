@@ -2,6 +2,55 @@
 #include <math.h>
 #include <string.h>
 
+/* 
+  
+  Usage:
+  
+  For char hex[], 
+  
+  input a hexadecimal
+  
+  string. It may begin
+  
+  with "0x" or "0X" 
+  
+  and immediately 
+  
+  followed by hexadecimal
+  
+  digits, including from
+  
+  'A' to 'F'. The
+  
+  letters can be uppercase or
+  
+  lowercase.
+
+
+  How it Works:
+
+  Does the following equation from
+  
+  RIGHT TO LEFT:
+  
+  16^n*b_n + 16^(n-1)*b_(n-1) + 16^(n-2)*b_(n-2) + .. 16^0*b_0
+  
+  <---  <---  <---  <---  <---  <---  <---  <---  <----
+  
+  Understand the following
+  
+  char c = 'A';
+  
+  (c - 'A') == ((int)0) NOT '0'
+  
+  C compiler will automatically convert char
+  
+  to an int when you apply an arithmetic
+  
+  operator to it and another char.
+  
+  */
+
 int htoi(char *s)                                           {
   
   char *zero_value = s; 
@@ -55,7 +104,7 @@ return decimal;
 
 int main() {
   
-  char hex[] = "0xF315";
+  char hex[] = "0XaBc";
   
   
   int ans = htoi(hex);
