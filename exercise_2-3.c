@@ -1,41 +1,53 @@
 #include <stdio.h>
+#include <math.h>
+#include <string.h>
 
-
-int htoi(char *s)                                                 {
+int htoi(char *s)                                           {
+  
+  char *zero_value = s; 
+  
+  int base;
+  
+  int exp = 0;
   
   int decimal = 0;
   
+  char *right = (s + (strlen(s)-1) );
   
-  
-  
-  while ( *s == '\0')                                     {
+  while ( right >= zero_value)                            {
     
-    if ( *s >= 'A' && *s <= 'F')              {
+    if (*right == 'X' || *right == 'x')                 {
       
-      decimal = (10*decimal + (int)(((*s - 'A') + 10)));
+      break;
     }
     
-    else if (*s >= 'a' && *s <= 'f')          {
+    else if (*right>= 'A' && *right <= 'F')            {  
       
-      decimal = (10*decimal + (int)(((*s - 'a') + 10)));
+      base = ((*right -'A')+10);
+      
+      decimal = ((int)pow(16,exp++))*base + decimal;
       
     }
     
-    else if (*s == '0' && (*(s+1) == 'X'|| *(s+1)=='x')) {
+    else if (*right>= 'a' && *right <= 'f')            {  
       
-      s = (s + 2);
-      continue;
+      base = ((*right -'a')+10);
+      
+      decimal = ((int)pow(16,exp++))*base + decimal;
+      
+    }
+    
+    else                                              {
+      // regular digit from '0' to '9'
+      base = ((*right - '0'));
+      
+      decimal = ((int)pow(16,exp++))*base + decimal;
+    
   }
   
-    else { // regular digit from '0' to '9'
-    
-      decimal = (10 * decimal + (int)((*s - '0')));
-    }
-    
-    s++;
+    right--;
   
 }
-
 
 return decimal;
 
@@ -48,5 +60,5 @@ int main() {
   
   int ans = htoi(hex);
   
-  printf("%d\n", htoi(hex));  
+  printf("%d\n", hex);  
 }
