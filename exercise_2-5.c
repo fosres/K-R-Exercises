@@ -17,6 +17,6 @@ int any(char *s1, char * s2)                {
 }
 
 int main(void) {
-  printf("%d\n",any("Hello World","abcfghijkmnpqstuvwxyz"));
+  printf("Index of first matching char in s1 that is ANYWHERE in s2 is: %d\n",any("Hello World","abcfghijkmnpqstuvwxyz"));
   return 0;
 }
