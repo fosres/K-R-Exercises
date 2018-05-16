@@ -17,6 +17,6 @@ int any(char *s1, char * s2)                {
 }
 
 int main(void) {
-  printf("%d\n",any("Hello World","z"));
+  printf("%d\n",any("Hello World","abcfghijkmnpqstuvwxyz"));
   return 0;
 }
