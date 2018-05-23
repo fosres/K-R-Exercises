@@ -22,9 +22,9 @@ int binsearch(int x, int v[], int n)  {
   if (x<v[low]||x>v[high]) // array is already sorted
     return -1;
   
-  while ((low <= high))
+  while ((low <= high) && ( x != v[mid]) ) 
     {
-      mid = (low + high)/2;
+      mid = (low+high)/2;
       if ( x < v[mid])
         high = mid - 1;
       else
@@ -37,6 +37,6 @@ int binsearch(int x, int v[], int n)  {
 
 int main() {
   int list[] = {1,2,5,6,9};
-  printf("%d",binsearch(2,list,5));
+  printf("%d",binsearch(6,list,5));
   return 0;
 }
