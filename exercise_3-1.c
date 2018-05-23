@@ -22,7 +22,7 @@ int binsearch(int x, int v[], int n)  {
   if (x<v[low]||x>v[high]) // array is already sorted
     return -1;
   
-  while ((low <= high) && ( x != v[mid]) ) // extra test in while loop DOES NOT COUNT AS A TEST INSIDE LOOP
+  while ((low <= high) && ( x != v[mid]) ) // extra test in while loop conditional DOES NOT COUNT AS A TEST INSIDE LOOP
     {
       mid = (low+high)/2;
       if ( x < v[mid])
