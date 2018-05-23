@@ -37,6 +37,6 @@ int binsearch(int x, int v[], int n)  {
 
 int main() {
   int list[] = {1,2,5,6,8,9};
-  printf("%d",binsearch(7,list,5));
+  printf("%d",binsearch(9,list,6));
   return 0;
 }
