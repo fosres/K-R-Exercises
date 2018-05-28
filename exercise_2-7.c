@@ -36,7 +36,7 @@ unsigned invert(unsigned x, int p, int n)                   {
 int main()
 {
 
-	printf("%u\n",invert(13,3,3));
+	printf("%u\n",invert(~0,31,32));
 
     return 0;
 }
