@@ -1,6 +1,7 @@
 //exercise_3-2.c
 
 #include <stdio.h>
+#include <string.h>
 
 char * escape(char *s, char *t) // remember to account for '\0'
 {
@@ -18,22 +19,27 @@ char * escape(char *s, char *t) // remember to account for '\0'
 				*s_zero_value++ = '\\';
 				*s_zero_value++ = 't';
 				t_zero_value++;
+				break;
 			case '\n':
 				*s_zero_value++ = '\\';
 				*s_zero_value++ = 'n';
 				t_zero_value++;
+				break;
 			case '\'':
 				*s_zero_value++ = '\\';
 				*s_zero_value++ = '\'';
 				t_zero_value++;
+				break;
 			case '\\':
 				*s_zero_value++ = '\\';
 				*s_zero_value++ = '\\';
 				t_zero_value++;
+				break;
 			case '\b':
 				*s_zero_value++ = '\\';
 				*s_zero_value++ = 'b';
 				t_zero_value++;
+				break;
 			default:
 				*s_zero_value = *t_zero_value;
 				s_zero_value++;
@@ -54,7 +60,7 @@ char * escape(char *s, char *t) // remember to account for '\0'
 
 int main()
 {
-	char t[1000] = "Z	E	R	G";
+	char t[1000] = "ZERG";
 
 	char s[1000];
 
