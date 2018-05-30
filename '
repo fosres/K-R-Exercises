@@ -1,0 +1,64 @@
+//exercise_3-2.c
+
+#include <stdio.h>
+
+void escape(char *s, char *t) // remember to account for '\0'
+{
+
+	while (*t != '\0')
+	{
+
+		switch(*t)
+		{
+
+			case '\t':
+				*s++ = '\\';
+				*s++ = 't';
+				t++;
+				break;
+			case '\n':
+				*s++ = '\\';
+				*s++ = 'n';
+				t++;
+				break;
+			case '\'':
+				*s++ = '\\';
+				*s++ = '\'';
+				t++;
+				break;
+			case '\\':
+				*s++ = '\\';
+				*s++ = '\\';
+				t++;
+				break;
+			case '\b':
+				*s++ = '\\';
+				*s++ = 'b';
+				t++;
+				break;
+			default:
+				*s++ = *t++;
+				break;
+
+		}
+
+	}
+
+	// what about '\0'?
+	
+	*s = *t;
+
+}
+
+int main()
+{
+	char t[1000] = "Z	E	R	G";
+
+	char s[1000];
+
+	escape(s,t);
+
+	printf("%s\n",s);
+	
+return 0;
+}
