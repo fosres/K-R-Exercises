@@ -2,7 +2,7 @@
 
 #include <stdio.h>
 
-void escape(char *s, char *t) // remember to account for '\0'
+char * escape(char *s, char *t) // remember to account for '\0'
 {
 	char *s_zero_value = s;
 
@@ -34,7 +34,6 @@ void escape(char *s, char *t) // remember to account for '\0'
 				*s_zero_value++ = '\\';
 				*s_zero_value++ = 'b';
 				t_zero_value++;
-				break;
 			default:
 				*s_zero_value = *t_zero_value;
 				s_zero_value++;
@@ -49,6 +48,8 @@ void escape(char *s, char *t) // remember to account for '\0'
 	
 	*s_zero_value = *t_zero_value;
 
+	return s;
+
 }
 
 int main()
@@ -57,9 +58,7 @@ int main()
 
 	char s[1000];
 
-	escape(s,t);
-
-	printf("%s\n",s);
+	printf("%s\n",escape(s,t));
 	
 return 0;
 }
