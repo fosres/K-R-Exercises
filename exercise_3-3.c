@@ -17,9 +17,19 @@ char * expand(char * s1, char * s2)
 
 			for ( c = *(s1-1); c <= *(s1 + 1); c++)
 			{
+				if (c==*(s2-1) && (s2 > s2_zero)) 
+					continue;	
+
 				*s2++ = c;
 			}
 
+		}
+		else // *s1 != '-'
+		{
+			if (*s2==*(s2-1) && (s2 > s2_zero)) 
+				continue;
+				
+			*s2++ = *s1;
 		}
 
 		s1++;
@@ -32,7 +42,7 @@ char * expand(char * s1, char * s2)
 
 int main()
 {
-	char input[1000] = "-B-Q3-7";	
+	char input[1000] = "a-b-c";	
 	char output[1000];	
 	printf("%s\n",expand(input,output));
 
