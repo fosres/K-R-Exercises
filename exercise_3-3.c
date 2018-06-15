@@ -1,50 +1,47 @@
-// exercise_3-3.c
-
 #include <stdio.h>
 #include <string.h>
 
-char * expand(char * s1, char * s2)
+void expand(char *s1, char *s2)
 {
+	char *s1_p = s1; char *s2_p = s2; int index;
 
-	char c; char * s1_zero = s1; char * s2_zero = s2;
-
-	while (*s1 != '\0')
+	for (;*s1_p!='\0'; )
 	{
-
 		
-		if 	(  *s1 == '-' && s1 != s1_zero && s1 != (s1_zero + strlen(s1_zero)-1) )
+    index = (int)(s1_p-s1);
+		
+		if (index==0)
 		{
-
-			for ( c = *(s1-1); c <= *(s1 + 1); c++)
+			*s2_p++=*s1_p++;
+		}
+    		else if (index==(strlen(s1)-1))
+    		{
+      			*s2_p=*s1_p++;
+    		}
+		else if (*s1_p!='-')
+		{
+			*s2_p++=*s1_p++;
+		}
+		else //*s1_p=='-'
+		{
+			for (char c = (*(s1_p-1)+1); c < *(s1_p+1); c++ )
 			{
-				if (c==*(s2-1) && (s2 > s2_zero)) 
-					continue;	
-
-				*s2++ = c;
+				*s2_p++=c;
 			}
 
+			*s1_p++;
 		}
-		else // *s1 != '-'
-		{
-			if (*s2==*(s2-1) && (s2 > s2_zero)) 
-				continue;
-				
-			*s2++ = *s1;
-		}
-
-		s1++;
-
 	}
-
-	return s2_zero;
-
 }
 
-int main()
+int main() 
 {
-	char input[1000] = "a-b-c";	
-	char output[1000];	
-	printf("%s\n",expand(input,output));
+	  static char s1[1000] = "-a-f-i-";
+	  static char s2[1000];
+	      
+	  expand(s1,s2);
 
+	  printf("%s\n",s2);
+		  
 }
 
