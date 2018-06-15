@@ -36,7 +36,16 @@ void expand(char *s1, char *s2)
 
 int main() 
 {
-	  static char s1[1000] = "-a-f-i-";
+	  static char s1[1000] = "z-a-";
+
+#if 0
+TEST FAILS FOR "-a-z 0-9 a-d-f [Fails here]-0-2 some text 1-1 WITH CAPITALS! 0-0 5-3 -";
+
+TEST FOR " -0-2- " would fail but if you fix above problem, this problem should also get fixed
+
+TEST REVERSE -z-a prints -zyx..a?
+
+#endif
 	  static char s2[1000];
 	      
 	  expand(s1,s2);
