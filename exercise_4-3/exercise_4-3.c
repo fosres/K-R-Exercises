@@ -162,7 +162,7 @@ void ungetch(int c) /* push character back on input */
 int val_length()
 {
 	
-	return (sp+1);
+	return (sp);
 
 }
 
