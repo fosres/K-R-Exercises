@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h> /* for atof() */
-#include <math.h>
 
 #define MAXOP 100
 #define NUMBER '0'
@@ -8,6 +7,13 @@
 int getop(char []);
 void push(double);
 double pop(void);
+int val_length();
+
+#define MAXVAL 100 /* maximum depth of val stack */
+
+int sp = 0;  /* next freee stack position */
+
+double val[MAXVAL]; /* value stack */
 
 /* reverse Polish calculator */
 
@@ -17,12 +23,20 @@ int main()
 	int type;
 	double op2;
 	char s[MAXOP];
+	static int sign;
 
 	while ((type = getop(s)) != EOF)
 	{
 		switch(type)
 		{
 			case NUMBER:
+				if ( sign == -1 )
+				{
+					push(-atof(s));
+					sign = 1;
+					break;
+				}
+
 				push(atof(s));
 				break;
 			case '+':
@@ -38,14 +52,13 @@ int main()
 				else
 					printf("error: zero divisor\n");
 				break;
-			case '%':
-				op2 = pop();
-				if (op2 != 0.0)
-					push(fmod(pop(),op2));
-				else
-					printf("error: zero divisor\n");
-				break;
 			case '-':
+				if ( (val_length()%2 != 0) || (val_length() == 0 ) )
+				{	
+					sign = -1;
+					break;
+				}
+					
 				op2 = pop();
 				if (op2 != 0.0)
 					push(pop()-op2);
@@ -63,11 +76,6 @@ int main()
 		return 0;
 }
 
-#define MAXVAL 100 /* maximum depth of val stack */
-
-int sp = 0;  /* next freee stack position */
-
-double val[MAXVAL]; /* value stack */
 
 /* push: push f onto value stack */
 void push(double f)
@@ -151,7 +159,10 @@ void ungetch(int c) /* push character back on input */
 		buf[bufp++] = c;
 }
 
+int val_length()
+{
+	
+	return (sp+1);
 
-
-
+}
 
