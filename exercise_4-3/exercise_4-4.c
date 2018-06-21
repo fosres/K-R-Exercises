@@ -26,6 +26,7 @@ int main()
 	double op2;
 	char s[MAXOP];
 	static int sign;
+	double temp;
 
 	while ((type = getop(s)) != EOF)
 	{
@@ -77,8 +78,16 @@ int main()
 			case 'p':
 				printf("\t%.8g\n",val[0]);
 				break;
+			case 'd':
+				val[1] = val[0];
+				break;
+			case 's':
+				temp = val[0];
+				val[0] = val[1];
+				val[1] = temp;
+				break;
 			case '\n':
-				if (s[0] == 'p')
+				if (s[0] == 'p'|| s[0] == 'd' || s[0] == 's')
 				{ }
 				else
 				{
