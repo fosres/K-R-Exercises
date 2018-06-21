@@ -63,7 +63,7 @@ int main()
 					printf("error: zero divisor\n");
 				break;
 			case '-':
-				if ( (val_length%2 != 0) || (val_length == 0 ) )
+				if ( (sp%2 != 0) || (sp == 0 ) )
 				{	
 					sign = -1;
 					break;
