@@ -1,6 +1,8 @@
+#include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h> /* for atof() */
 #include <math.h>
+#include <string.h>
 
 #define MAXOP 100
 #define NUMBER '0'
@@ -8,25 +10,30 @@
 int getop(char []);
 void push(double);
 double pop(void);
-int val_length();
-void clear();
+int val_length;
+void clear(void);
+void print_elements(void);
 
 #define MAXVAL 100 /* maximum depth of val stack */
 
 int sp = 0;  /* next freee stack position */
 
-double val[MAXVAL]; /* value stack */
+static double val[MAXVAL]; /* value stack */
 
 /* reverse Polish calculator */
+
+
 
 int main()
 {
 
 	int type;
 	double op2;
-	char s[MAXOP];
+	static char s[MAXOP];
 	static int sign;
 	double temp;
+	int IS_CHAR_COMMAND = 0;
+	static int val_length;
 
 	while ((type = getop(s)) != EOF)
 	{
@@ -56,7 +63,7 @@ int main()
 					printf("error: zero divisor\n");
 				break;
 			case '-':
-				if ( (val_length()%2 != 0) || (val_length() == 0 ) )
+				if ( (val_length%2 != 0) || (val_length == 0 ) )
 				{	
 					sign = -1;
 					break;
@@ -75,20 +82,32 @@ int main()
 				else
 					printf("error: zero divisor\n");
 				break;
-			case 'p':
-				printf("\t%.8g\n",val[0]);
+			case 'p': /* Print value on top stack */
+				printf("\tTop value: %.8g\n",val[0]);
+				IS_CHAR_COMMAND = 1;
 				break;
-			case 'd':
+			case 'd': /* Duplicate top value */
 				val[1] = val[0];
+				IS_CHAR_COMMAND = 1;
 				break;
-			case 's':
+			case 's': 
 				temp = val[0];
 				val[0] = val[1];
 				val[1] = temp;
+				IS_CHAR_COMMAND = 1;
+				break;
+			case 'c': /* clear contents of val array stack */
+				clear();
+				IS_CHAR_COMMAND = 1;
+				break;
+			case 'v':
+				printf("%d\n",val_length);
+				print_elements();
+				IS_CHAR_COMMAND = 1;
 				break;
 			case '\n':
-				if (s[0] == 'p'|| s[0] == 'd' || s[0] == 's')
-				{ }
+				if (IS_CHAR_COMMAND)
+				{ IS_CHAR_COMMAND = 0;}
 				else
 				{
 				printf("\t%.8g\n",pop());
@@ -110,6 +129,7 @@ void push(double f)
 	if (sp < MAXVAL)
 	{
 		val[sp++] = f;
+		val_length++;
 	}
 	else
 	{
@@ -123,7 +143,9 @@ double pop(void)
 {
 
 	if (sp > 0)
+	{	
 		return val[--sp];
+	}
 	else
 	{
 		printf("error: stack empty\n");
@@ -132,7 +154,6 @@ double pop(void)
 
 }
 
-#include <ctype.h>
 
 int getch(void);
 void ungetch(int);
@@ -185,21 +206,18 @@ void ungetch(int c) /* push character back on input */
 		buf[bufp++] = c;
 }
 
-int val_length()
-{
-	
-	return (sp);
-
-}
 
 void clear()
 {
-	
 	int i = 0;
-
-	while (i < val_length() )
-	{
+	while (i < val_length )
 		val[i++] = 0;
-	}
+	sp = 0;	
 
+}
+
+void print_elements()
+{
+	for ( int i = 0; i < val_length; i++)
+		printf("v[%d] = %.8g\n",i,val[i]);
 }
