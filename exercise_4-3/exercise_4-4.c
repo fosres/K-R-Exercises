@@ -9,6 +9,7 @@ int getop(char []);
 void push(double);
 double pop(void);
 int val_length();
+void clear();
 
 #define MAXVAL 100 /* maximum depth of val stack */
 
@@ -73,8 +74,16 @@ int main()
 				else
 					printf("error: zero divisor\n");
 				break;
+			case 'p':
+				printf("\t%.8g\n",val[0]);
+				break;
 			case '\n':
+				if (s[0] == 'p')
+				{ }
+				else
+				{
 				printf("\t%.8g\n",pop());
+				}
 				break;
 			default:
 				printf("error: unknown command %s\n",s);
@@ -174,3 +183,14 @@ int val_length()
 
 }
 
+void clear()
+{
+	
+	int i = 0;
+
+	while (i < val_length() )
+	{
+		val[i++] = 0;
+	}
+
+}
